@@ -17,7 +17,7 @@ int t;
 
 i = (low - 1);
 
-for (int j = low; j < high; j++)
+for (j = low; j < high; j++)
 {
 if (arr[j] < pivot)
 {       
