@@ -1,23 +1,7 @@
 #include "sort.h"
 
 /**
- * swap -  Swap two numbers
- * @a: number array one
- * @b: number array two
- *
- * Return: nothing
- */
-
-void swap(int *a, int *b)
-{
-int t = *a;
-*a = *b;
-*b = t;
-}
-
-
-/**
- * partition -  Sorted the array
+ * particion -  Sorted the array
  * @arr: array to sort
  * @low: Starting index
  * @high: Ending index
@@ -25,20 +9,35 @@ int t = *a;
  * Return: nothing
  */
 
-int partition(int arr[], int low, int high)
+int particion(int arr[], int low, int high, int size)
 {
 int pivot = arr[high];
-int i = (low - 1);
+int i, j; 
+int t;
 
-for (int j = low; j <= high - 1; j++)
+i = (low - 1);
+
+for (int j = low; j < high; j++)
 {
 if (arr[j] < pivot)
-{
+{       
 i++;
-swap(&arr[i], &arr[j]);
+if (i != j)
+{
+t = arr[i];
+arr[i] = arr[j];
+arr[j] = t;
+print_array(arr, size);
 }
 }
-swap(&arr[i + 1], &arr[high]);
+}
+if (arr[high] < arr[i + 1])
+{
+t = arr[i+1];
+arr[i+1] = arr[high];
+arr[high] = t;
+print_array(arr, size);
+}
 return (i + 1);
 }
 
@@ -55,8 +54,8 @@ void quickSort(int arr[], int low, int high, int size)
 {
 if (low < high)
 {
-int pi = partition(arr, low, high);
-print_array(arr, size);
+int pi = particion(arr, low, high, size);
+
 quickSort(arr, low, pi - 1, size);
 quickSort(arr, pi + 1, high, size);
 }
