@@ -12,7 +12,7 @@
 int particion(int arr[], int low, int high, int size)
 {
 int pivot = arr[high];
-int i, j; 
+int i, j;
 int t;
 
 i = (low - 1);
@@ -20,7 +20,7 @@ i = (low - 1);
 for (j = low; j < high; j++)
 {
 if (arr[j] < pivot)
-{       
+{
 i++;
 if (i != j)
 {
@@ -33,8 +33,8 @@ print_array(arr, size);
 }
 if (arr[high] < arr[i + 1])
 {
-t = arr[i+1];
-arr[i+1] = arr[high];
+t = arr[i + 1];
+arr[i + 1] = arr[high];
 arr[high] = t;
 print_array(arr, size);
 }
